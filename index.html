@@ -1,21 +1,43 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
   <head>
-    <style type="text/css">
-      body {
-        text-align: center;
-        background-color: #283031;
-      }
-      img {
-        width: 100%;
-        max-width: 1080px;
-      }
-    </style>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Menu de Elementos Coffee">
+  <style>
+  body {
+    margin: 0;
+    text-align: center;
+    background-color: #283031;
+    background-color: #514e4e;
+  }
+
+  img {
+    height: 100vh;
+    width: auto;
+  }
+
+  .full-size {
+    height: auto;
+  }
+  </style>
+  <title>Elementos | Menu</title>
   </head>
   <body>
     <picture>
-      <source srcset="/assets/images/20201211-menu-810.jpg" media="(min-width: 810px)">
-      <source srcset="/assets/images/20201211-menu-1080.jpg" media="(min-width: 1080px)">
-      <img src="/assets/images/20201211-menu-540.jpg" alt="Menu elementos" title="Menu elementos">
+      <source srcset="/assets/images/20201211-menu-540.webp" type="image/webp">
+      <source srcset="/assets/images/20201211-menu-810.webp" type="image/webp" media="(min-width: 810px)">
+      <source srcset="/assets/images/20201211-menu-810.jpg"  type="image/jpg" media="(min-width: 810px)">
+      <source srcset="/assets/images/20201211-menu-1080.webp" type="image/webp" media="(min-width: 1080px)">
+      <source srcset="/assets/images/20201211-menu-1080.jpg" type="image/jpg" media="(min-width: 1080px)">
+      <img id="menu-pic" src="/assets/images/20201211-menu-540.jpg" alt="Menu elementos" title="Menu elementos" width="540" height="960">
     </picture>
+    <script>
+      const menu = document.getElementById('menu-pic');
+      menu.addEventListener('click', function() {
+        this.classList.toggle('full-size');
+      });
+    </script>
   </body>
 </html>
