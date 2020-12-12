@@ -6,16 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit">
   <meta name="description" content="Menu de Elementos Coffee">
   <style>
+    
+  :root {
+    --real100vh: 100vh;
+  }
+
   body {
     margin: 0;
     text-align: center;
     background-color: #283031;
     background-color: #514e4e;
   }
-    
+
+/*
   img {
     height: 100vh;
     width: auto;
+  }
+*/  
+
+  img {
+    height: 100vh;
+    transition: height 0.4s ease-in-out;
+
+    @supports (height: var(--)) {
+      height: var(--real100vh);
+    }
   }
 
   .full-size {
@@ -38,6 +54,19 @@
 //       menu.addEventListener('click', function() {
 //         this.classList.toggle('full-size');
 //       });
+//       const container = document.querySelector('.container');
+      function set100vhVar() {
+        // If less than most tablets, set CSS var to window height.
+        let value = "100vh"
+        if (this.winWidth <= 1024) {
+          value = `${window.innerHeight}px`
+        }
+        document.documentElement.style.setProperty("--real100vh", value)
+      }
+      //on resize, recalculate
+      window.addEventListener('resize', set100vhVar);
+      //on load, calculate
+      set100vhVar();
     </script>
   </body>
 </html>
