@@ -9,6 +9,7 @@
     
   :root {
     --real100vh: 100vh;
+    --real100vw: 100vw;
   }
 
   body {
@@ -27,10 +28,14 @@
 
   img {
     height: 100vh;
+    max-width: 100vw;
     transition: height 0.4s ease-in-out;
 
     @supports (height: var(--)) {
       height: var(--real100vh);
+    }
+    @supports (width: var(--)) {
+      max-width: var(--real100vw);
     }
   }
 
@@ -55,18 +60,22 @@
 //         this.classList.toggle('full-size');
 //       });
 //       const container = document.querySelector('.container');
-      function set100vhVar() {
+      function set100Vars() {
         // If less than most tablets, set CSS var to window height.
-        let value = "100vh"
+        let heightValue = "100vh"
+        let widthValue = "100vw"
         if (this.winWidth <= 1024) {
-          value = `${window.innerHeight}px`
+          heightValue = `${window.innerHeight}px`
+          widthValue = `${window.innerWidth}px`
         }
-        document.documentElement.style.setProperty("--real100vh", value)
+        
+        document.documentElement.style.setProperty("--real100vh", heightValue)
+        document.documentElement.style.setProperty("--real100vw", widthValue)
       }
       //on resize, recalculate
-      window.addEventListener('resize', set100vhVar);
+      window.addEventListener('resize', set100Vars);
       //on load, calculate
-      set100vhVar();
+      set100Vars();
     </script>
   </body>
 </html>
