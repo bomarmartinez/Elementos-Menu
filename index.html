@@ -6,10 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Menu de Elementos Coffee">
   <style>
-    
+
   :root {
     --real100vh: 100vh;
-/*     --real100vw: 100vw; */
   }
 
   body {
@@ -19,18 +18,16 @@
     background-color: #514e4e;
   }
 
-
   img {
     height: 100%;
     width: auto;
   }
-  
 
   #container {
     height: 95vh;
     height: var(--real100vh);
     width: auto;
-    transition: height 0.4s ease-in-out;    
+    transition: height 0.4s ease-in-out;
   }
 
   .full-size {
@@ -52,18 +49,17 @@
       </picture>
     </div>
     <script>
-//       const menu = document.getElementById('menu-pic');
-//       menu.addEventListener('click', function() {
-//         this.classList.toggle('full-size');
-//       });
-//       const container = document.querySelector('.container');
+      const menu = document.getElementById('menu-pic');
+      menu.addEventListener('click', function() {
+        this.classList.toggle('full-size');
+      });
+      // const container = document.querySelector('.container');
+
       function set100Vars() {
         // If less than most tablets, set CSS var to window height.
         let heightValue = "100vh"
-        if (this.winWidth <= 1024) {
-          heightValue = `${window.innerHeight}px`
-        }
-        
+        heightValue = `${window.innerHeight}px`
+
         document.documentElement.style.setProperty("--real100vh", heightValue)
       }
       //on resize, recalculate
