@@ -27,17 +27,10 @@
   
 
   #container {
-    height: 100vh;
+    height: 95vh;
+    height: var(--real100vh);
     width: auto;
-    transition: height 0.4s ease-in-out;
-
-    @supports (height: var(--)) {
-      height: var(--real100vh);
-    }
-    
-/*     @supports (max-width: var(--)) {
-      max-width: var(--real100vw);
-    } */
+    transition: height 0.4s ease-in-out;    
   }
 
   .full-size {
@@ -67,14 +60,11 @@
       function set100Vars() {
         // If less than most tablets, set CSS var to window height.
         let heightValue = "100vh"
-//         let widthValue = "100vw"
         if (this.winWidth <= 1024) {
           heightValue = `${window.innerHeight}px`
-//           widthValue = `${window.innerWidth}px`
         }
         
         document.documentElement.style.setProperty("--real100vh", heightValue)
-//         document.documentElement.style.setProperty("--real100vw", widthValue)
       }
       //on resize, recalculate
       window.addEventListener('resize', set100Vars);
