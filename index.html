@@ -9,7 +9,7 @@
     
   :root {
     --real100vh: 100vh;
-    --real100vw: 100vw;
+/*     --real100vw: 100vw; */
   }
 
   body {
@@ -26,34 +26,38 @@
   }
 */  
 
-  img {
+  #container {
     height: 100vh;
-    max-width: 100vw;
+    width: auto;
     transition: height 0.4s ease-in-out;
 
     @supports (height: var(--)) {
       height: var(--real100vh);
     }
-    @supports (width: var(--)) {
+    
+/*     @supports (max-width: var(--)) {
       max-width: var(--real100vw);
-    }
+    } */
   }
 
   .full-size {
     height: auto;
   }
+
   </style>
   <title>Elementos | Menu</title>
   </head>
   <body>
-    <picture>
-      <source srcset="assets/images/20201211-menu-540.webp" type="image/webp">
-      <source srcset="assets/images/20201211-menu-810.webp" type="image/webp" media="(min-width: 810px)">
-      <source srcset="assets/images/20201211-menu-810.jpg"  type="image/jpg" media="(min-width: 810px)">
-      <source srcset="assets/images/20201211-menu-1080.webp" type="image/webp" media="(min-width: 1080px)">
-      <source srcset="assets/images/20201211-menu-1080.jpg" type="image/jpg" media="(min-width: 1080px)">
-      <img id="menu-pic" src="assets/images/20201211-menu-540.jpg" alt="Menu elementos" title="Menu elementos" width="540" height="960">
-    </picture>
+    <div id="container">
+      <picture>
+        <source srcset="assets/images/20201211-menu-540.webp" type="image/webp">
+        <source srcset="assets/images/20201211-menu-810.webp" type="image/webp" media="(min-width: 810px)">
+        <source srcset="assets/images/20201211-menu-810.jpg"  type="image/jpg" media="(min-width: 810px)">
+        <source srcset="assets/images/20201211-menu-1080.webp" type="image/webp" media="(min-width: 1080px)">
+        <source srcset="assets/images/20201211-menu-1080.jpg" type="image/jpg" media="(min-width: 1080px)">
+        <img id="menu-pic" src="assets/images/20201211-menu-540.jpg" alt="Menu elementos" title="Menu elementos" width="540" height="960">
+      </picture>
+    </div>
     <script>
 //       const menu = document.getElementById('menu-pic');
 //       menu.addEventListener('click', function() {
@@ -63,14 +67,14 @@
       function set100Vars() {
         // If less than most tablets, set CSS var to window height.
         let heightValue = "100vh"
-        let widthValue = "100vw"
+//         let widthValue = "100vw"
         if (this.winWidth <= 1024) {
           heightValue = `${window.innerHeight}px`
-          widthValue = `${window.innerWidth}px`
+//           widthValue = `${window.innerWidth}px`
         }
         
         document.documentElement.style.setProperty("--real100vh", heightValue)
-        document.documentElement.style.setProperty("--real100vw", widthValue)
+//         document.documentElement.style.setProperty("--real100vw", widthValue)
       }
       //on resize, recalculate
       window.addEventListener('resize', set100Vars);
