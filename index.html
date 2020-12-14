@@ -1,43 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-  <meta content="utf-8" http-equiv="encoding">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Menu de Elementos Coffee">
-  <style>
-  body {
-    margin: 0;
-    text-align: center;
-    background-color: #283031;
-    background-color: #514e4e;
-  }
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Menu de Elementos Coffee">
+    <style>
+        :root {
+            --real100vh: 100vh;
+        }
 
-  img {
-    height: 100vh;
-    width: auto;
-  }
+        body {
+            margin: 0;
+            text-align: center;
+            background-color: #283031;
+            background-color: #514e4e;
+        }
 
-  .full-size {
-    height: auto;
-  }
-  </style>
-  <title>Elementos | Menu</title>
-  </head>
-  <body>
+        img {
+            height: 100%;
+            width: auto;
+        }
+
+        #container {
+            height: 95vh;
+            height: var(--real100vh);
+            width: auto;
+            transition: height 0.4s ease-in-out;
+        }
+
+        #container.full-size {
+            height: auto;
+        }
+    </style>
+    <title>Elementos | Menu</title>
+</head>
+<body>
+<div id="container">
     <picture>
-      <source srcset="assets/images/20201211-menu-540.webp" type="image/webp">
-      <source srcset="assets/images/20201211-menu-810.webp" type="image/webp" media="(min-width: 810px)">
-      <source srcset="assets/images/20201211-menu-810.jpg"  type="image/jpg" media="(min-width: 810px)">
-      <source srcset="assets/images/20201211-menu-1080.webp" type="image/webp" media="(min-width: 1080px)">
-      <source srcset="assets/images/20201211-menu-1080.jpg" type="image/jpg" media="(min-width: 1080px)">
-      <img id="menu-pic" src="assets/images/20201211-menu-540.jpg" alt="Menu elementos" title="Menu elementos" width="540" height="960">
+        <source srcset="assets/images/20201213-menu-540.webp"  type="image/webp">
+        <source srcset="assets/images/20201213-menu-810.webp"  type="image/webp" media="(min-width: 810px)">
+        <source srcset="assets/images/20201213-menu-810.png"   type="image/png" media="(min-width: 810px)">
+        <source srcset="assets/images/20201213-menu-1080.webp" type="image/webp" media="(min-width: 1080px)">
+        <source srcset="assets/images/20201213-menu-1080.png"  type="image/png" media="(min-width: 1080px)">
+        <img id="menu-pic" src="assets/images/20201213-menu-540.png" alt="Menu elementos" title="Menu elementos"
+             width="540" height="960">
     </picture>
-    <script>
-      const menu = document.getElementById('menu-pic');
-      menu.addEventListener('click', function() {
-        this.classList.toggle('full-size');
-      });
-    </script>
-  </body>
+</div>
+<script>
+    //if pic is clicked, add full-size class to container
+    const menu = document.getElementById('menu-pic')
+    const container = document.getElementById('container')
+    menu.addEventListener('click', function () {
+        container.classList.toggle('full-size')
+    });
+
+    //calculate and set --real100vh to window's inner height
+    function set100Vars() {
+        let heightValue = `${window.innerHeight}px`
+        document.documentElement.style.setProperty("--real100vh", heightValue)
+    }
+    //add listener so on resize we recalculate
+    window.addEventListener('resize', set100Vars);
+    //on load, calculate
+    set100Vars();
+</script>
+</body>
 </html>
